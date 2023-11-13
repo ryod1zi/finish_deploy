@@ -9,8 +9,6 @@ class UserManager(BaseUserManager):
     def _create_user(self, email, password, **kwargs):
         if not email:
             return ValueError('Email is required!')
-        if not kwargs.get('phone_number'):
-            return ValueError('Phone number is required!')
         email = self.normalize_email(email=email)
         user = self.model(email=email, **kwargs)
         user.create_activation_code()
