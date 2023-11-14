@@ -58,7 +58,7 @@ class CustomUser(AbstractUser):
 
     def create_phone_activation_code(self):
         from random import randint
-        code = randint(100000, 100000)
+        code = randint(100000, 1000000)
         self.activation_phone_code = code
 
 

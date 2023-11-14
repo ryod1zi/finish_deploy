@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
 from rest_framework import permissions
 from .serializers import *
@@ -23,7 +22,7 @@ class RegistrationView(APIView):
             try:
                 send_activation_sms.delay(user.phone_number, user.activation_phone_code)
             except:
-                return Response({'message': 'Registered, but trouble with email',
+                return Response({'message': 'Registered, but trouble with phone number',
                                  'data': serializer.data}, status=201)
             try:
                 send_confirmation_email.delay(user.email, user.activation_code)
