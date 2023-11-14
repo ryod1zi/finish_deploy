@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     #apps
     'apps.account',
     'apps.category',
-    'apps.post',
+    'apps.car',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +141,12 @@ AUTH_USER_MODEL = 'account.CustomUser'
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=180),
     'REFRESH_TOKEN_LIFETIME': timedelta(hours=48)
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ]
 }
 
 MEDIA_URL = 'media/'
