@@ -1,4 +1,3 @@
-from django.test import TestCase
 from django.core.mail import send_mail
 from django.utils.html import format_html
 from celery import shared_task
