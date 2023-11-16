@@ -34,7 +34,7 @@ class RegistrationView(APIView):
 
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserListSerializer
     permission_classes = permissions.IsAuthenticated,
 
 

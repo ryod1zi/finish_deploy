@@ -40,8 +40,11 @@ class CustomUser(AbstractUser):
     activation_phone_code = models.CharField(max_length=8, blank=True)
     is_active = models.BooleanField(default=False)
     is_phone_active = models.BooleanField(default=False)
+
     first_name = None
     last_name = None
+    groups = None
+    user_permissions = None
 
     objects = UserManager()
 

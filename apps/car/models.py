@@ -19,7 +19,6 @@ class Car(models.Model):
     kpp = models.CharField(max_length=20)
     str_wheel = models.CharField(max_length=20)
     preview = models.ImageField(upload_to='previews/', blank=True)
-    photos = models.ImageField(upload_to='photos/', blank=True)
     city = models.CharField(max_length=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
@@ -29,8 +28,15 @@ class Car(models.Model):
         return self.title
 
     class Meta:
+        ordering = ('created_at',)
         verbose_name = 'Тачка'
         verbose_name_plural = 'Тачки'
+
+
+class CarImages(models.Model):
+    title = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to='images/')
+    car = models.ForeignKey(Car, related_name='images', on_delete=models.CASCADE)
 
 
 

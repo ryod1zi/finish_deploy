@@ -35,3 +35,22 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         exclude = ('password',)
+
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ('password',)
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        data = {
+            'id': repr['id'],
+            'username': repr['username'],
+            'email': repr['email'],
+            'is staff status': repr['is_staff'],
+            'is superuser': repr['is_superuser']
+        }
+        return data
+
+
